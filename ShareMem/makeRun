@@ -1,0 +1,3 @@
+g++ -o WriteRun shmWrite.cpp semaphore.cpp
+g++ -o ReadRun shmRead.cpp semaphore.cpp
+
