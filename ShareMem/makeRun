@@ -1,3 +1,21 @@
-g++ -o WriteRun shmWrite.cpp semaphore.cpp
-g++ -o ReadRun shmRead.cpp semaphore.cpp
+rm ./*.o
+rm ./*.a
+rm WriteRun
+rm ReadRun
+ls -al
+echo "print here..........."
+
+
+#create libsemaphore.a
+g++ -c semaphore.cpp
+ar cr libsemaphore.a ./*.o
+
+g++ -c shmWrite.cpp  
+g++ -o WriteRun shmWrite.o  libsemaphore.a
+
+g++ -c shmRead.cpp 
+g++ -o ReadRun  shmRead.o  libsemaphore.a
+
+#g++ -o WriteRun shmWrite.cpp semaphore.cpp
+#g++ -o ReadRun shmRead.cpp semaphore.cpp
 
